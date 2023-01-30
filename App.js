@@ -1,20 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React, { Component } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import Field from "./src/components/Field";
+import params from "./src/params";
+import { createMinedBoard } from "./src/logic";
+import MineField from "./src/components/MineField";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = this.createState();
+  }
+  minesAmount = () => {
+    const cols = params.getColumnsAmount();
+    const rows = params.getRowsAmount();
+    return Math.ceil(cols * rows * params.difficultLevel);
+  };
+  createState = () => {
+    const cols = params.getColumnsAmount();
+    const rows = params.getRowsAmount();
+    return {
+      board: createMinedBoard(rows, cols, this.minesAmount()),
+    };
+  };
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>
+          {params.getColumnsAmount()} X {params.getRowsAmount()}
+        </Text>
+        <View style={styles.board}>
+          <MineField board={this.state.board} />
+        </View>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: "flex-end",
+  },
+  board: {
+    alignItems: "center",
+    backgroundColor: "#AAA",
   },
 });

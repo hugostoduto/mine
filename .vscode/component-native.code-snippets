@@ -1,0 +1,23 @@
+{
+
+	"componet native": {
+		"scope": "javascript,typescript",
+		"prefix": "compNative",
+		"body": [
+			
+	 		"$2",
+			 "import {View, StyleSheet,  Text } from 'react-native'",
+			 "import GlobalStyle from './style'",
+			 "import React from 'react'",
+			 "",
+			 "export default (props) => {",
+				
+
+				"\treturn (",
+							"\t\t<View>$1</View>",
+				"\t);",
+				"}"
+	 	],
+	 	"description": "Log output to console"
+	} 
+}
