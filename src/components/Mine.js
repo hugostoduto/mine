@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   line: {
+    zIndex: 10,
     position: "absolute",
     height: 3,
     width: 20,
