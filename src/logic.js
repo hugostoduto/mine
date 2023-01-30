@@ -89,4 +89,11 @@ const showMines = (board) =>
   fields(board)
     .filter((field) => field.mined)
     .forEach((field) => (field.opened = true));
-export { createMinedBoard };
+export {
+  createMinedBoard,
+  cloneBoard,
+  openField,
+  hadExplosion,
+  wonGame,
+  showMines,
+};
